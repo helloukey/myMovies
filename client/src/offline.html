@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMovies - You are offline!</title>
+
+    <!-- Styles -->
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: #111111;
+            color: #EEE;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+            padding: 0rem 8px 5rem 8px;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        h2 {
+            font-weight: 100;
+            color: #a6adba;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+        .btn {
+            font-size: 1.2rem;
+            font-weight: 500;
+            background-color: #222;
+            color: #a6adba;
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #000;
+        }
+
+        /* Media Queries */
+        @media (max-width: 640px) {
+            h2 {
+                font-size: 1.2rem;
+            }
+            .btn {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container -->
+    <div class="container">
+        <h1>Oops!</h1>
+        <h2>It seems there is a problem with your network connection.<br/>
+            Please check your network status.
+        </h2>
+        <div class="buttons">
+            <button class="btn btn-1">Refresh</button>
+            <button class="btn btn-2">Goto Homepage</button>
+        </div>
+    </div>
+</body>
+
+<!-- Script -->
+<script>
+    const refresh = document.querySelector(".btn-1");
+    const homepage = document.querySelector(".btn-2");
+
+    // refresh on click
+    refresh.onclick = () => {
+        window.location.reload();
+    }
+    // goto homepage on click
+    homepage.onclick = () => {
+        window.location.href = "/"
+    }
+</script>
+</html>
