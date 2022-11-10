@@ -1,0 +1,35 @@
+{
+  "name": "mymovies",
+  "version": "1.0.0",
+  "description": "Your own personal movies, shows, and artist collection store.",
+  "main": "index.js",
+  "scripts": {
+    "build-client": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "setup-production": "npm run install-client && npm run build-client && npm run install server",
+    "start-server": "cd server && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helloukey/myMovies.git"
+  },
+  "keywords": [
+    "mymovies",
+    "movie",
+    "app",
+    "pwa",
+    "movie",
+    "app",
+    "mern",
+    "stack",
+    "movie",
+    "app"
+  ],
+  "author": "Kunal Ukey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/helloukey/myMovies/issues"
+  },
+  "homepage": "https://github.com/helloukey/myMovies#readme"
+}
