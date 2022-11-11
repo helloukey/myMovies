@@ -10,7 +10,7 @@
     "setup-production": "npm run install-client && npm run build-client && npm run install-server",
     "start-server": "cd server && node server.js",
     "start-client": "cd client && npm run start",
-    "start-production": "npm run start-server && npm run start-client"
+    "start-production": "npm run start-server"
   },
   "repository": {
     "type": "git",
