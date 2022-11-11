@@ -8,6 +8,8 @@ import userHero from "../../assets/userHero.svg";
 const UserProfile = ({ heading, token }) => {
   const dispatch = useDispatch();
 
+  console.log(token)
+
   return (
     <div className="w-full">
       <div

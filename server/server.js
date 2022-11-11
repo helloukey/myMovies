@@ -7,6 +7,7 @@ const tmdbRoutes = require("./routes/tmdb");
 const userRoutes = require("./routes/user");
 const collectionRoutes = require("./routes/collection");
 const userAuthorization = require("./middleware/userAuthorization");
+const path = require('path')
 
 // only when ready to deploy
 app.use(express.static("../client/build"));
@@ -30,13 +31,13 @@ mongoose
   });
 
 // tmdb
-app.use("/api", tmdbRoutes)
+app.use("/api", tmdbRoutes);
 
-// routes
-app.use("/user", userAuthorization, userRoutes);
+// User Authorization
+app.use("/authorization", userRoutes);
 
-// autherizatin middleware
-// app.use(userAuthorization);
+// authorization middleware
+app.use(userAuthorization);
 app.use("/user", collectionRoutes);
 
 // only when ready to deploy

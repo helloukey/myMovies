@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/user",
+    baseUrl: "http://localhost:8000/",
   }),
   tagTypes: ["collection"],
   endpoints: (builder) => ({
@@ -11,7 +11,7 @@ export const userApi = createApi({
     register: builder.mutation({
       query(user) {
         return {
-          url: "/register",
+          url: "authorization/register",
           method: "POST",
           body: user,
         };
@@ -21,7 +21,7 @@ export const userApi = createApi({
     login: builder.mutation({
       query(user) {
         return {
-          url: "/login",
+          url: "authorization/login",
           method: "POST",
           body: user,
         };
@@ -31,7 +31,7 @@ export const userApi = createApi({
     getCollection: builder.query({
       query: (token) => {
         return {
-          url: "/collection",
+          url: "user/collection",
           method: "GET",
           headers: { Authorization: "Bearer " + token },
         };
@@ -43,7 +43,7 @@ export const userApi = createApi({
       query(args) {
         const { data, token } = args;
         return {
-          url: "/collection",
+          url: "user/collection",
           method: "POST",
           body: data,
           headers: { Authorization: "Bearer " + token },
@@ -55,7 +55,7 @@ export const userApi = createApi({
       query(args) {
         const { data, token } = args;
         return {
-          url: "/collection",
+          url: "user/collection",
           method: "POST",
           body: data,
           headers: { Authorization: "Bearer " + token },
@@ -68,7 +68,7 @@ export const userApi = createApi({
       query(args) {
         const { id, token } = args;
         return {
-          url: `/collection/${id}`,
+          url: `user/collection/${id}`,
           method: "DELETE",
           headers: { Authorization: "Bearer " + token },
         };
@@ -80,7 +80,7 @@ export const userApi = createApi({
       query(args) {
         const { id, token } = args;
         return {
-          url: `/collection/${id}`,
+          url: `user/collection/${id}`,
           method: "DELETE",
           headers: { Authorization: "Bearer " + token },
         };
