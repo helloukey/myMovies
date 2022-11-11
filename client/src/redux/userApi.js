@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://mymovies.onrender.com/",
+    baseUrl: "https://mymovies.onrender.com/",
   }),
   tagTypes: ["collection"],
   endpoints: (builder) => ({
