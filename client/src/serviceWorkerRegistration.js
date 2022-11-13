@@ -119,7 +119,7 @@ const isLocalhost = Boolean(
           registerValidSW(swUrl, config);
         }
       })
-      .catch(async () => {
+      .catch(() => {
         console.log('No internet connection found. App is running in offline mode.');
       });
   }
