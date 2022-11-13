@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div className="w-full overflow-x-hidden">
-      {!heroLoading && !moviesLoading && !showsLoading && data && list && shows ?
+      {!heroLoading && !moviesLoading && !showsLoading && data && list && shows &&
       <>
       <Hero data={data} error={error} />
       <MoviesCarousel
@@ -27,8 +27,10 @@ const Home = () => {
          />
       <Footer />
       </>
-      :
-      <MainScreen />
+      }
+      {/* Loading Screen */}
+      {(heroLoading || moviesLoading || showsLoading) && !data && !list && !shows &&
+        <MainScreen />
       }
     </div>
   );
