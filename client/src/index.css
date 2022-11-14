@@ -48,3 +48,53 @@ body {
     display: none;
   }
 }
+
+/* SearchBar */
+.searchBar {
+  animation-name: appearSearchBar;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes appearSearchBar {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* fadeImage */
+.fadeImage {
+  animation-name: fadingImage;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fadingImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* fadeHeroText */
+.fadeHeroText {
+  animation-name: fadingHeroText;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fadingHeroText {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

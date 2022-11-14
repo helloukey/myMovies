@@ -70,7 +70,7 @@ const Search = () => {
       {isSearch && (
         <div
           ref={searchBarRef}
-          className={`w-full flex justify-between items-center px-4 md:px-10 lg:px-12 xl:pl-[160px] py-2 md:py-4 bg-card fixed z-50 transition-all duration-300`}
+          className={`w-full flex justify-between items-center px-4 md:px-10 lg:px-12 xl:pl-[160px] py-2 md:py-4 bg-card fixed z-50 searchBar`}
         >
           {/* Search Field */}
           <div className="form-control w-full mx-auto">

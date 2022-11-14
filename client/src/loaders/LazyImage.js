@@ -23,7 +23,14 @@ const LazyImage = ({ src, placeholder, type }) => {
 
   return (
     <>
-      {loading && <img ref={placeholderRef} src={placeholder} alt="" />}
+      {loading && 
+        <img
+          ref={placeholderRef}
+          src={placeholder}
+          alt=""
+          className="fadeImage"
+        />
+      }
       <img
         ref={imageRef}
         src={imageURL}
@@ -33,8 +40,8 @@ const LazyImage = ({ src, placeholder, type }) => {
           loading
             ? "h-0 w-0 hidden"
             : type === "card"
-            ? "rounded-t-md h-full w-full object-cover"
-            : "h-full w-full object-cover"
+            ? "rounded-t-md h-full w-full object-cover fadeImage"
+            : "h-full w-full object-cover fadeImage"
         }
         onLoad={() => setLoading(false)}
       />

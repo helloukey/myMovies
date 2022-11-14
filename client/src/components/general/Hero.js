@@ -131,7 +131,7 @@ const Hero = ({ data, error }) => {
           }`}
           >
             {/* Heading */}
-            <h2 className="text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]">
+            <h2 className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]">
               {data && data.mediaType ? (
                 <Link
                   to={
@@ -148,7 +148,7 @@ const Hero = ({ data, error }) => {
             </h2>
 
             {/* Rating & Certification */}
-            <div className="flex flex-col md:flex-row gap-2 md:gap-5 lg:w-[225%] xl:w-[185%]">
+            <div className="fadeHeroText flex flex-col md:flex-row gap-2 md:gap-5 lg:w-[225%] xl:w-[185%]">
               {/* Rating */}
               <div className="flex items-center gap-2">
                 {/* Hero Rating Component */}
@@ -176,7 +176,7 @@ const Hero = ({ data, error }) => {
             </div>
 
             {/* Description */}
-            <h3 className="text-white font-normal hidden md:block lg:w-[225%] xl:text-lg xl:w-[185%]">
+            <h3 className="fadeHeroText text-white font-normal hidden md:block lg:w-[225%] xl:text-lg xl:w-[185%]">
               {data && data?.overview.length > 300
                 ? `${data.overview.substring(0, 300)}...`
                 : data?.overview}
@@ -187,7 +187,7 @@ const Hero = ({ data, error }) => {
               <button
                 aria-label="Play"
                 onClick={handleTrailer}
-                className="btn gap-2 text-white hidden lg:flex lg:w-fit bg-card hover:bg-background"
+                className="fadeHeroText btn gap-2 text-white hidden lg:flex lg:w-fit bg-card hover:bg-background"
               >
                 Watch Trailer
                 <FaRegPlayCircle />
