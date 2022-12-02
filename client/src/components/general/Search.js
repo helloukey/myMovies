@@ -76,6 +76,7 @@ const Search = () => {
           <div className="form-control w-full mx-auto">
             <div className="input-group">
               <input
+                autoFocus
                 type="text"
                 placeholder="Search for a movie, show or person..."
                 className="placeholder:text-gray-500 text-gray-200 input md:text-lg px-0 input-bordered bg-transparent border-none focus:outline-none w-full"

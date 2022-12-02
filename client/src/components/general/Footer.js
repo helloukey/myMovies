@@ -13,7 +13,7 @@ const Footer = () => {
             <p>Copyright © 2022 - All rights reserved.</p>
             <p>Made with ❤{" "}
                 <a aria-label="helloukey" target="_blank" rel="noreferrer" className="hover:text-white underline"
-                    href="https://www.github.com/helloukey">@helloukey
+                    href="https://github.com/helloukey">@helloukey
                 </a>
             </p>
             <p>Data provided by -{" "} 
@@ -27,7 +27,7 @@ const Footer = () => {
         <div className="flex items-center justify-center gap-4 pb-10 sm:p-0">
             <a 
                 aria-label="website"
-                href="https://github.com/helloukey"
+                href="https://kunalukey.com"
                 target="_blank" rel="noreferrer"
                 className="hover:text-white"
                 >
@@ -51,7 +51,7 @@ const Footer = () => {
             </a>
             <a 
                 aria-label="youtube"
-                href="https:youtube.com/techlenses"
+                href="https://youtube.com/c/techlenses"
                 target="_blank" rel="noreferrer"
                 className="hover:text-white"
                 >
