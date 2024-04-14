@@ -21,6 +21,15 @@ const LazyImage = ({ src, placeholder, type }) => {
 
   }, [src, placeholder]);
 
+  // check if image src has changed
+  useEffect(() => {
+    if (imageRef && imageRef.current && !loading) {
+      if (imageRef.current.src !== src) {
+        setImageURL(src);
+      }
+    }
+  }, [src, imageRef, setImageURL, loading])
+
   return (
     <>
       {loading && 
