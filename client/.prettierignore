@@ -1,0 +1,7 @@
+.vscode
+node_modules
+public
+.prettierrc
+postcss.config.js
+tailwind.config.js
+src/assets

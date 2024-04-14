@@ -43,6 +43,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.16",
+    "prettier": "3.2.5",
     "tailwindcss": "^3.1.8"
   },
   "proxy": "http://localhost:8000"
