@@ -15,22 +15,18 @@ const Movies = () => {
   const {
     data: nowPlaying,
     isLoading: nowPlayingLoading,
-    error: nowPlayingError,
   } = useGetMovieListQuery("now_playing");
   const {
     data: popular,
     isLoading: popularLoading,
-    error: popularError,
   } = useGetMovieListQuery("popular");
   const {
     data: topRated,
     isLoading: topRatedLoading,
-    error: topRatedError,
   } = useGetMovieListQuery("top_rated");
   const {
     data: upcoming,
     isLoading: upcomingLoading,
-    error: upcomingError,
   } = useGetMovieListQuery("upcoming");
   return (
     <div className="w-full overflow-x-hidden">
