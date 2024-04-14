@@ -24,11 +24,11 @@ const CardActions = ({ mediaType }) => {
   // mutations
   const [
     addLike,
-    { data: likeData, isLoading: likeLoading, error: likeError },
+    { isLoading: likeLoading, error: likeError },
   ] = useAddLikeMutation();
   const [
     addWatchLater,
-    { data: watchData, isLoading: watchLoading, error: watchError },
+    { isLoading: watchLoading, error: watchError },
   ] = useAddWatchLaterMutation();
   const { data: collection } = useGetCollectionQuery(user?.token, {
     skip: !user,

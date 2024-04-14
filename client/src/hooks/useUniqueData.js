@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useUniqueData = (data) => {
   const [uniqueItems, setUniqueItems] = useState([]);

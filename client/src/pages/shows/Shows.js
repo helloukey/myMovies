@@ -11,26 +11,22 @@ import {
 import MainScreen from "../../loaders/screens/MainScreen";
 
 const Shows = () => {
-  const { data, isLoading, error } = useGetSingleTrendingQuery("tv");
+  const { data, isLoading } = useGetSingleTrendingQuery("tv");
   const {
     data: nowPlaying,
     isLoading: nowPlayingLoading,
-    error: nowPlayingError,
   } = useGetShowListQuery("airing_today");
   const {
     data: popular,
     isLoading: popularLoading,
-    error: popularError,
   } = useGetShowListQuery("popular");
   const {
     data: topRated,
     isLoading: topRatedLoading,
-    error: topRatedError,
   } = useGetShowListQuery("top_rated");
   const {
     data: onAirShows,
     isLoading: onAirShowsLoading,
-    error: onAirShowsError,
   } = useGetShowListQuery("on_the_air");
   return (
     <div className="w-full overflow-x-hidden">

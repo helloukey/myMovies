@@ -12,7 +12,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParam, setSearchParam] = useSearchParams();
+  const [searchParam] = useSearchParams();
   const [lastPage, setLastPage] = useState("");
 
   // Get last path excluding search page
