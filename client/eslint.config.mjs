@@ -27,6 +27,7 @@ export default [
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   pluginReactConfig,
+  ...compat.extends("plugin:cypress/recommended"),
   ...compat.extends("prettier"),
   {
     rules: {
@@ -39,14 +40,16 @@ export default [
   {
     ignores: [
       ".vscode",
-      "cypress",
       "node_modules",
       "public",
       "src/assets",
       ".prettierrc",
       ".prettierignore",
-      "cypress.config.js",
       "eslint.config.mjs",
+      "tailwind.config.js",
+      "src/serviceWorkerRegistration.js",
+      "src/service-worker.js",
+      "postcss.config.js",
     ],
   },
   eslintConfigPrettier,
