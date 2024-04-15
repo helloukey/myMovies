@@ -11,19 +11,10 @@
     "start-server": "cd server && node server.js",
     "start-client": "cd client && npm run start",
     "start-production": "npm run start-server",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "client/**/*.{js,jsx,ts,tsx}": [
-      "cd client && prettier --write --ignore-unknown",
-      "cd client && eslint --cache --fix --max-warnings=0",
-      "cd client && prettier --write"
-    ],
-    "server/**/*.js": [
-      "cd server && prettier --write --ignore-unknown",
-      "cd server && eslint --cache --fix --max-warnings=0",
-      "cd server && prettier --write"
-    ]
+    "prepare": "husky install",
+    "lint": "npm-run-all lint:backend lint:frontend",
+    "lint:backend": "cd server && npm run lint:staged",
+    "lint:frontend": "cd client && npm run lint:staged"
   },
   "repository": {
     "type": "git",
@@ -48,6 +39,7 @@
   },
   "homepage": "https://github.com/helloukey/myMovies#readme",
   "devDependencies": {
-    "husky": "^9.0.11"
+    "husky": "^9.0.11",
+    "npm-run-all": "^4.1.5"
   }
 }
