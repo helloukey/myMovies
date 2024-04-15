@@ -10,7 +10,11 @@
     "setup-production": "npm run install-client && npm run build-client && npm run install-server",
     "start-server": "cd server && node server.js",
     "start-client": "cd client && npm run start",
-    "start-production": "npm run start-server"
+    "start-production": "npm run start-server",
+    "prepare": "husky install",
+    "lint": "npm-run-all lint:backend lint:frontend",
+    "lint:backend": "cd server && npm run lint:staged",
+    "lint:frontend": "cd client && npm run lint:staged"
   },
   "repository": {
     "type": "git",
@@ -33,5 +37,9 @@
   "bugs": {
     "url": "https://github.com/helloukey/myMovies/issues"
   },
-  "homepage": "https://github.com/helloukey/myMovies#readme"
+  "homepage": "https://github.com/helloukey/myMovies#readme",
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "npm-run-all": "^4.1.5"
+  }
 }
