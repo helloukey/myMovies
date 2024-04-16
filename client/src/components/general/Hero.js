@@ -9,7 +9,7 @@ import LazyImage from "../../loaders/LazyImage";
 import ReactPlayer from "react-player/youtube";
 import HeroRating from "../rating/HeroRating";
 
-const Hero = ({ data, error }) => {
+const Hero = ({ data }) => {
   const backdrop = useSelector((state) => state.layout.backdrop);
   const [certification, setCertification] = useState("");
   const [youtubeVideo, setYoutubeVideo] = useState(null);
@@ -70,7 +70,9 @@ const Hero = ({ data, error }) => {
       lg:flex-row-reverse"
         >
           {/* Hero Image */}
-          <div className={`w-full aspect-video lg:w-3/4 ${playTrailer ? "mx-auto" : ""}`}>
+          <div
+            className={`w-full aspect-video lg:w-3/4 ${playTrailer ? "mx-auto" : ""}`}
+          >
             {!playTrailer && (
               <LazyImage
                 src={
@@ -84,31 +86,35 @@ const Hero = ({ data, error }) => {
             )}
 
             {/* YouTube Player */}
-            {playTrailer &&
-            <div className={playTrailer ? "player-wrapper" : "player-wrapper-hidden"}>
-              <ReactPlayer
-                className="react-player"
-                url={youtubeVideo}
-                playing={playTrailer}
-                controls={true}
-                width="100%"
-                height="100%"
-                pip={true}
-                onEnded={() => setPlayTrailer(false)}
-              />
-
-            {/* Close Video Button */}
-            {youtubeVideo && playTrailer && (
-              <button
-                aria-label="Close"
-                onClick={() => setPlayTrailer(false)}
-                className="absolute bottom-1 left-2/4 -translate-x-2/4 z-50"
+            {playTrailer && (
+              <div
+                className={
+                  playTrailer ? "player-wrapper" : "player-wrapper-hidden"
+                }
               >
-                <FaTimes className="text-white text-4xl btn-ghost rounded-full p-1" />
-              </button>
+                <ReactPlayer
+                  className="react-player"
+                  url={youtubeVideo}
+                  playing={playTrailer}
+                  controls={true}
+                  width="100%"
+                  height="100%"
+                  pip={true}
+                  onEnded={() => setPlayTrailer(false)}
+                />
+
+                {/* Close Video Button */}
+                {youtubeVideo && playTrailer && (
+                  <button
+                    aria-label="Close"
+                    onClick={() => setPlayTrailer(false)}
+                    className="absolute bottom-1 left-2/4 -translate-x-2/4 z-50"
+                  >
+                    <FaTimes className="text-white text-4xl btn-ghost rounded-full p-1" />
+                  </button>
+                )}
+              </div>
             )}
-            </div>
-            }
 
             {/* Mobile Play Button */}
             {youtubeVideo && !playTrailer && (
@@ -120,7 +126,6 @@ const Hero = ({ data, error }) => {
                 <FaRegPlayCircle className="lg:hidden text-white text-5xl" />
               </button>
             )}
-
           </div>
 
           {/* Typography */}

@@ -48,7 +48,7 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
     }
   };
 
-  const handleScroll = (e) => {
+  const handleScroll = () => {
     // last child visibility check
     if (
       carouselContainerRef.current.lastElementChild.getBoundingClientRect()
@@ -78,6 +78,13 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
     }
   };
 
+  // Handlescroll on load
+  useEffect(() => {
+    if (dynamicWidth > 768) {
+      handleScroll();
+    }
+  }, [dynamicWidth]);
+
   return (
     <div className="w-full pl-4 md:pl-10 lg:pl-12">
       {/* Card Actions Body */}
@@ -103,7 +110,6 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
           className="carousel w-full lg:py-4 py-2 pr-2 space-x-4 rounded-box"
           ref={itemsContainerRef}
           onScroll={dynamicWidth > 768 ? handleScroll : () => null}
-          onLoad={dynamicWidth > 768 ? handleScroll : () => null}
         >
           {/* Left Cursor */}
           {dynamicWidth > 768 && (
@@ -138,10 +144,10 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                       item.media_type === "movie" || mediaType === "movie"
                         ? `/movies/${item.id}`
                         : item.media_type === "tv" || mediaType === "show"
-                        ? `/shows/${item.id}`
-                        : item.media_type === "person"
-                        ? `/person/${item.id}`
-                        : ""
+                          ? `/shows/${item.id}`
+                          : item.media_type === "person"
+                            ? `/person/${item.id}`
+                            : ""
                     }
                   >
                     <LazyImage
@@ -159,10 +165,10 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                         item.media_type === "movie"
                           ? `/movies/${item.id}`
                           : item.media_type === "tv"
-                          ? `/shows/${item.id}`
-                          : item.media_type === "person"
-                          ? `/person/${item.id}`
-                          : ""
+                            ? `/shows/${item.id}`
+                            : item.media_type === "person"
+                              ? `/person/${item.id}`
+                              : ""
                       }
                     >
                       <h2 className="hidden sm:block sm:text-sm sm:font-medium truncate">
@@ -187,7 +193,6 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                     >
                       <FaEllipsisH className="text-lg" />
                     </div>
-                    
                   </div>
                 </div>
               ))}
