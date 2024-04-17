@@ -92,6 +92,7 @@ const Hero = ({ data }) => {
                 className={
                   playTrailer ? "player-wrapper" : "player-wrapper-hidden"
                 }
+                data-cy="hero-video-player"
               >
                 <ReactPlayer
                   className="react-player"
@@ -110,6 +111,7 @@ const Hero = ({ data }) => {
                     aria-label="Close"
                     onClick={() => setPlayTrailer(false)}
                     className="absolute bottom-1 left-2/4 -translate-x-2/4 z-50"
+                    data-cy="hero-video-close-button"
                   >
                     <FaTimes className="text-white text-4xl btn-ghost rounded-full p-1" />
                   </button>
@@ -123,6 +125,7 @@ const Hero = ({ data }) => {
                 aria-label="Play"
                 onClick={handleTrailer}
                 className="lg:hidden btn-ghost btn-active rounded-full absolute left-2/4 top-1/4 sm:top-1/3 -translate-x-2/4 -translate-y-1/4 sm:-translate-y-1/3"
+                data-cy="hero-mobile-play-button"
               >
                 <FaRegPlayCircle className="lg:hidden text-white text-5xl" />
               </button>

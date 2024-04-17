@@ -89,7 +89,10 @@ const CastCarousel = ({ data, heading }) => {
       {castCardAction && <CastCardActions mediaType="person" />}
 
       {/* Heading */}
-      <div className="flex items-center font-medium mt-10 mb-2 sm:mb-3 md:mb-4 gap-4">
+      <div
+        className="flex items-center font-medium mt-10 mb-2 sm:mb-3 md:mb-4 gap-4"
+        data-cy="cast-carousel-heading"
+      >
         <h2 className="text-lg sm:text-2xl text-white">{heading}</h2>
       </div>
 
@@ -120,6 +123,7 @@ const CastCarousel = ({ data, heading }) => {
           <div
             className="flex gap-3 transition-all ease-in"
             ref={carouselContainerRef}
+            data-cy="cast-carousel-items-container"
           >
             {/* Item */}
             {data &&
@@ -128,7 +132,11 @@ const CastCarousel = ({ data, heading }) => {
                   key={item.id}
                   className={`last:mr-4 last:md:mr-10 last:lg:mr-12 aspect-[0.67/1] w-[26vw] xs:w-[28vw] sm:w-[22vw] md:w-[17vw] lg:w-[14.5vw] xl:w-[13.5vw] 2xl:w-[12vw] h-auto carousel-item flex flex-col rounded-md bg-nav cursor-pointer transition-all hover:scale-105 ease-in`}
                 >
-                  <Link aria-label="card" to={`/person/${item.id}`}>
+                  <Link
+                    aria-label="card"
+                    to={`/person/${item.id}`}
+                    data-cy="cast-carousel-item-link"
+                  >
                     <LazyImage
                       src={
                         item.profile_path
