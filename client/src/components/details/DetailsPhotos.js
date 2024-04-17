@@ -40,24 +40,24 @@ const DetailsPhotos = ({ data }) => {
   const handleTouchStart = (e) => {
     const touchPosition = e.touches[0].clientX;
     setTouchPosition(touchPosition);
-  }
+  };
 
   const handleTouchMove = (e) => {
-    if(touchPosition === null) return;
+    if (touchPosition === null) return;
 
     const touchMove = e.touches[0].clientX;
     const difference = touchPosition - touchMove;
 
-    if(difference > 5) {
+    if (difference > 5) {
       handleRight();
     }
 
-    if(difference < -5) {
+    if (difference < -5) {
       handleLeft();
     }
 
     setTouchPosition(null);
-  }
+  };
 
   return (
     <>
@@ -73,6 +73,7 @@ const DetailsPhotos = ({ data }) => {
             <label
               className="absolute top-0 right-0 lg:top-1 lg:right-1 btn btn-ghost btn-circle z-50"
               htmlFor="my-modal-4"
+              data-cy="details-photos-close"
             >
               <FaTimes className="text-white text-2xl mg:text-4xl cursor-pointer" />
             </label>
@@ -101,8 +102,8 @@ const DetailsPhotos = ({ data }) => {
                     mediaType === "backdrops" && data.backdrops.length
                       ? backdrop + data.backdrops[slideNumber].file_path
                       : mediaType === "posters" && data.posters.length
-                      ? poster + data.posters[slideNumber].file_path
-                      : LoadingCard
+                        ? poster + data.posters[slideNumber].file_path
+                        : LoadingCard
                   }
                   alt=""
                 />
@@ -111,10 +112,16 @@ const DetailsPhotos = ({ data }) => {
           </label>
 
           {/* Backdrops */}
-          <h2 className="text-xl lg:text-2xl font-medium mb-4 md:mb-5">
+          <h2
+            className="text-xl lg:text-2xl font-medium mb-4 md:mb-5"
+            data-cy="details-photos-headline"
+          >
             Backdrops
           </h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 mb-8 md:mb-10 lg:mb-12">
+          <div
+            className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 mb-8 md:mb-10 lg:mb-12"
+            data-cy="details-photos-container"
+          >
             {data &&
               data.backdrops.map((item, index) => (
                 <label
@@ -122,12 +129,13 @@ const DetailsPhotos = ({ data }) => {
                   htmlFor="my-modal-4"
                   className="w-auto h-auto rounded-md cursor-pointer transition-all hover:scale-105 ease-in"
                   onClick={() => handleModal(index, "backdrops")}
+                  data-cy="details-photos-single"
                 >
-                <LazyImage
-                  src={item.file_path ? backdrop + item.file_path : EmptyHero}
-                  placeholder={LoadingHero}
-                  type="backdrop"
-                />
+                  <LazyImage
+                    src={item.file_path ? backdrop + item.file_path : EmptyHero}
+                    placeholder={LoadingHero}
+                    type="backdrop"
+                  />
                 </label>
               ))}
           </div>
@@ -145,11 +153,11 @@ const DetailsPhotos = ({ data }) => {
                   className="w-auto h-auto rounded-md cursor-pointer transition-all hover:scale-105 ease-in"
                   onClick={() => handleModal(index, "posters")}
                 >
-                <LazyImage
-                  src={item.file_path ? poster + item.file_path : EmptyCard}
-                  placeholder={LoadingCard}
-                  type="card"
-                />
+                  <LazyImage
+                    src={item.file_path ? poster + item.file_path : EmptyCard}
+                    placeholder={LoadingCard}
+                    type="card"
+                  />
                 </label>
               ))}
           </div>
