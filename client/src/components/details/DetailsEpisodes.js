@@ -26,7 +26,12 @@ const DetailsEpisodes = ({ seasons }) => {
   return (
     <div className="w-full">
       {/* Heading */}
-      <h2 className="text-xl lg:text-2xl font-medium mb-4 md:mb-5">Episodes</h2>
+      <h2
+        className="text-xl lg:text-2xl font-medium mb-4 md:mb-5"
+        data-cy="details-episodes-headline"
+      >
+        Episodes
+      </h2>
 
       {seasons && seasons.seasons && (
         <select
@@ -46,13 +51,17 @@ const DetailsEpisodes = ({ seasons }) => {
       )}
 
       {/* Container */}
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3">
+      <div
+        className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-3"
+        data-cy="details-episodes-container"
+      >
         {data &&
           data.episodes &&
           data.episodes.map((item) => (
             <div
               key={item.id}
               className="w-full aspect-video h-auto carousel-item flex flex-col rounded-md bg-nav cursor-pointer transition-all hover:scale-105 ease-in"
+              data-cy="details-episodes-single"
             >
               <LazyImage
                 src={item.still_path ? backdrop + item.still_path : EmptyHero}
