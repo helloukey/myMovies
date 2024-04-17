@@ -48,7 +48,7 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
     }
   };
 
-  const handleScroll = (e) => {
+  const handleScroll = () => {
     // last child visibility check
     if (
       carouselContainerRef.current.lastElementChild.getBoundingClientRect()
@@ -78,18 +78,34 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
     }
   };
 
+  // Handle scroll on load
+  useEffect(() => {
+    if (dynamicWidth > 768) {
+      handleScroll();
+    }
+  }, [dynamicWidth]);
+
   return (
     <div className="w-full pl-4 md:pl-10 lg:pl-12">
       {/* Card Actions Body */}
       {cardAction && <CardActions mediaType={mediaType} />}
 
       {/* Heading */}
-      <div className="flex items-center font-medium mt-10 mb-2 sm:mb-3 md:mb-4 gap-4">
-        <h2 className="text-lg sm:text-2xl text-white">{heading}</h2>
+      <div
+        className="flex items-center font-medium mt-10 mb-2 sm:mb-3 md:mb-4 gap-4"
+        data-cy="carousel-heading-container"
+      >
+        <h2
+          className="text-lg sm:text-2xl text-white"
+          data-cy="carousel-heading-text"
+        >
+          {heading}
+        </h2>
         {explore && (
           <Link
             to={explore}
             className="btn btn-xs sm:btn-sm bg-card hover:bg-nav"
+            data-cy="carousel-heading-explore-button"
           >
             Explore All
           </Link>
@@ -103,7 +119,6 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
           className="carousel w-full lg:py-4 py-2 pr-2 space-x-4 rounded-box"
           ref={itemsContainerRef}
           onScroll={dynamicWidth > 768 ? handleScroll : () => null}
-          onLoad={dynamicWidth > 768 ? handleScroll : () => null}
         >
           {/* Left Cursor */}
           {dynamicWidth > 768 && (
@@ -124,6 +139,7 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
           <div
             className="flex gap-3 transition-all ease-in"
             ref={carouselContainerRef}
+            data-cy="carousel-items-container"
           >
             {/* Item */}
             {data &&
@@ -138,11 +154,12 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                       item.media_type === "movie" || mediaType === "movie"
                         ? `/movies/${item.id}`
                         : item.media_type === "tv" || mediaType === "show"
-                        ? `/shows/${item.id}`
-                        : item.media_type === "person"
-                        ? `/person/${item.id}`
-                        : ""
+                          ? `/shows/${item.id}`
+                          : item.media_type === "person"
+                            ? `/person/${item.id}`
+                            : ""
                     }
+                    data-cy="carousel-item-link"
                   >
                     <LazyImage
                       src={
@@ -159,10 +176,10 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                         item.media_type === "movie"
                           ? `/movies/${item.id}`
                           : item.media_type === "tv"
-                          ? `/shows/${item.id}`
-                          : item.media_type === "person"
-                          ? `/person/${item.id}`
-                          : ""
+                            ? `/shows/${item.id}`
+                            : item.media_type === "person"
+                              ? `/person/${item.id}`
+                              : ""
                       }
                     >
                       <h2 className="hidden sm:block sm:text-sm sm:font-medium truncate">
@@ -187,7 +204,6 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                     >
                       <FaEllipsisH className="text-lg" />
                     </div>
-                    
                   </div>
                 </div>
               ))}

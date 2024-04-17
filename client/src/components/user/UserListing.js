@@ -26,11 +26,11 @@ const UserListing = ({ data, saveType }) => {
                       to={
                         item.mediaType === "movie"
                           ? `/movies/${item.mediaId}`
-                          : item.mediaType === ("tv" || "show")
-                          ? `/shows/${item.mediaId}`
-                          : item.mediaType === "person"
-                          ? `/person/${item.mediaId}`
-                          : ""
+                          : item.mediaType === "tv" || item.mediaType === "show"
+                            ? `/shows/${item.mediaId}`
+                            : item.mediaType === "person"
+                              ? `/person/${item.mediaId}`
+                              : ""
                       }
                       className="font-medium"
                     >

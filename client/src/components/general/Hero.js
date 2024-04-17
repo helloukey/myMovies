@@ -9,7 +9,7 @@ import LazyImage from "../../loaders/LazyImage";
 import ReactPlayer from "react-player/youtube";
 import HeroRating from "../rating/HeroRating";
 
-const Hero = ({ data, error }) => {
+const Hero = ({ data }) => {
   const backdrop = useSelector((state) => state.layout.backdrop);
   const [certification, setCertification] = useState("");
   const [youtubeVideo, setYoutubeVideo] = useState(null);
@@ -70,7 +70,10 @@ const Hero = ({ data, error }) => {
       lg:flex-row-reverse"
         >
           {/* Hero Image */}
-          <div className={`w-full aspect-video lg:w-3/4 ${playTrailer ? "mx-auto" : ""}`}>
+          <div
+            className={`w-full aspect-video lg:w-3/4 ${playTrailer ? "mx-auto" : ""}`}
+            data-cy="hero-image-container"
+          >
             {!playTrailer && (
               <LazyImage
                 src={
@@ -84,31 +87,35 @@ const Hero = ({ data, error }) => {
             )}
 
             {/* YouTube Player */}
-            {playTrailer &&
-            <div className={playTrailer ? "player-wrapper" : "player-wrapper-hidden"}>
-              <ReactPlayer
-                className="react-player"
-                url={youtubeVideo}
-                playing={playTrailer}
-                controls={true}
-                width="100%"
-                height="100%"
-                pip={true}
-                onEnded={() => setPlayTrailer(false)}
-              />
-
-            {/* Close Video Button */}
-            {youtubeVideo && playTrailer && (
-              <button
-                aria-label="Close"
-                onClick={() => setPlayTrailer(false)}
-                className="absolute bottom-1 left-2/4 -translate-x-2/4 z-50"
+            {playTrailer && (
+              <div
+                className={
+                  playTrailer ? "player-wrapper" : "player-wrapper-hidden"
+                }
               >
-                <FaTimes className="text-white text-4xl btn-ghost rounded-full p-1" />
-              </button>
+                <ReactPlayer
+                  className="react-player"
+                  url={youtubeVideo}
+                  playing={playTrailer}
+                  controls={true}
+                  width="100%"
+                  height="100%"
+                  pip={true}
+                  onEnded={() => setPlayTrailer(false)}
+                />
+
+                {/* Close Video Button */}
+                {youtubeVideo && playTrailer && (
+                  <button
+                    aria-label="Close"
+                    onClick={() => setPlayTrailer(false)}
+                    className="absolute bottom-1 left-2/4 -translate-x-2/4 z-50"
+                  >
+                    <FaTimes className="text-white text-4xl btn-ghost rounded-full p-1" />
+                  </button>
+                )}
+              </div>
             )}
-            </div>
-            }
 
             {/* Mobile Play Button */}
             {youtubeVideo && !playTrailer && (
@@ -120,7 +127,6 @@ const Hero = ({ data, error }) => {
                 <FaRegPlayCircle className="lg:hidden text-white text-5xl" />
               </button>
             )}
-
           </div>
 
           {/* Typography */}
@@ -131,7 +137,10 @@ const Hero = ({ data, error }) => {
           }`}
           >
             {/* Heading */}
-            <h2 className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]">
+            <h2
+              className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]"
+              data-cy="hero-title"
+            >
               {data && data.mediaType ? (
                 <Link
                   to={
@@ -150,13 +159,24 @@ const Hero = ({ data, error }) => {
             {/* Rating & Certification */}
             <div className="fadeHeroText flex flex-col md:flex-row gap-2 md:gap-5 lg:w-[225%] xl:w-[185%]">
               {/* Rating */}
-              <div className="flex items-center gap-2">
+              <div
+                className="flex items-center gap-2"
+                data-cy="hero-rating-container"
+              >
                 {/* Hero Rating Component */}
                 <HeroRating data={data} />
-                <span className="2xl:text-lg">{data?.vote_count} Reviews</span>
+                <span
+                  className="2xl:text-lg"
+                  data-cy="hero-rating-reviews-count"
+                >
+                  {data?.vote_count} Reviews
+                </span>
               </div>
               {/* Season & Certification */}
-              <div className="flex items-center gap-2 2xl:text-lg">
+              <div
+                className="flex items-center gap-2 2xl:text-lg"
+                data-cy="hero-season-certification-container"
+              >
                 {data && data.number_of_seasons && (
                   <span>Season {data.number_of_seasons}</span>
                 )}
@@ -176,7 +196,10 @@ const Hero = ({ data, error }) => {
             </div>
 
             {/* Description */}
-            <h3 className="fadeHeroText text-white font-normal hidden md:block lg:w-[225%] xl:text-lg xl:w-[185%]">
+            <h3
+              className="fadeHeroText text-white font-normal hidden md:block lg:w-[225%] xl:text-lg xl:w-[185%]"
+              data-cy="hero-description"
+            >
               {data && data?.overview.length > 300
                 ? `${data.overview.substring(0, 300)}...`
                 : data?.overview}
