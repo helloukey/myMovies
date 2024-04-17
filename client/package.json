@@ -26,7 +26,7 @@
   "lint-staged": {
     "src/**": "prettier --write --ignore-unknown",
     "src/**.js": "eslint --cache --fix --max-warnings=0",
-    "*.--write": "prettier --write"
+    "**.js": "prettier --write"
   },
   "browserslist": {
     "production": [
