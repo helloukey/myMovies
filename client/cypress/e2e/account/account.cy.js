@@ -124,4 +124,14 @@ describe("Check content after login", () => {
 
   // Check the navigation
   checkNavigation();
+
+  // Logout
+  it("Logout", () => {
+    cy.getCypress("user-profile-logout-button").should("exist");
+    cy.getCypress("user-profile-logout-button").should("be.visible");
+    cy.getCypress("user-profile-logout-button").should("have.text", "Logout");
+    cy.getCypress("user-profile-logout-button").click();
+    cy.getCypress("account-card-image").should("exist");
+    cy.getCypress("account-card-image").should("be.visible");
+  });
 });
