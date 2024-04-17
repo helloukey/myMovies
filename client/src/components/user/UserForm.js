@@ -13,52 +13,70 @@ const UserForm = () => {
   const dispatch = useDispatch();
 
   // mutation
-  const [register, {error: registerError, isLoading: registerLoading, data:registerData}] = useRegisterMutation();
-  const [login, {error: loginError, isLoading: loginLoading, data:loginData}] = useLoginMutation();
+  const [
+    register,
+    { error: registerError, isLoading: registerLoading, data: registerData },
+  ] = useRegisterMutation();
+  const [
+    login,
+    { error: loginError, isLoading: loginLoading, data: loginData },
+  ] = useLoginMutation();
 
   useEffect(() => {
-    if(registerData) dispatch(setUser(registerData));
-    if(loginData) dispatch(setUser(loginData));
+    if (registerData) dispatch(setUser(registerData));
+    if (loginData) dispatch(setUser(loginData));
 
     // reset form
-    if(registerData || loginData) {
+    if (registerData || loginData) {
       setFirstName("");
       setEmail("");
       setPassword("");
     }
-  },[loginData, registerData, dispatch])
+  }, [loginData, registerData, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!email || !password) return;
+    if (!email || !password) return;
 
     if (page === "login") {
       await login({ email, password });
-    } 
+    }
     if (page === "register") {
       await register({ firstName, email, password });
     }
   };
 
   const handlePage = () => {
-    page === "login" ? setPage("register") : setPage("login")
-  }
+    page === "login" ? setPage("register") : setPage("login");
+  };
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center  p-4 md:p-10 lg:p-12">
       {/* Card Wrapper */}
-      <div className="w-full max-w-md md:max-w-4xl flex justify-center items-center">
+      <div
+        className="w-full max-w-md md:max-w-4xl flex justify-center items-center"
+        data-cy="account-card-wrapper"
+      >
         {/* Card Container */}
-        <div className="w-full px-4 pt-4 pb-8 mb-24 bg-nav flex justify-center items-center gap-10 md:pb-24 md:mb-24 md:px-10 md:py-12 lg:px-12 lg:py-16 rounded-md">
+        <div
+          className="w-full px-4 pt-4 pb-8 mb-24 bg-nav flex justify-center items-center gap-10 md:pb-24 md:mb-24 md:px-10 md:py-12 lg:px-12 lg:py-16 rounded-md"
+          data-cy="account-card-container"
+        >
           {/* Form  */}
-          <div className="form-control w-full">
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-medium mb-4">
+          <div className="form-control w-full" data-cy="account-card-form">
+            <h1
+              className="text-2xl md:text-3xl lg:text-5xl font-medium mb-4"
+              data-cy="account-card-heading"
+            >
               {page === "login" ? "Login" : "Register"}
             </h1>
             {page === "register" && (
               <div className="form-control">
-                <label className="label">
+                <label
+                  className="label"
+                  data-cy="account-card-first-name-label"
+                >
                   <span className="label-text">First Name</span>
                 </label>
                 <input
@@ -67,11 +85,12 @@ const UserForm = () => {
                   className="input input-bordered focus:outline-none bg-background"
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
+                  data-cy="account-card-first-name-input"
                 />
               </div>
             )}
             <div className="form-control">
-              <label className="label">
+              <label className="label" data-cy="account-card-email-label">
                 <span className="label-text">Email</span>
               </label>
               <input
@@ -80,10 +99,11 @@ const UserForm = () => {
                 className="input input-bordered focus:outline-none bg-background"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+                data-cy="account-card-email-input"
               />
             </div>
             <div className="form-control">
-              <label className="label">
+              <label className="label" data-cy="account-card-password-label">
                 <span className="label-text">Password</span>
               </label>
               <input
@@ -92,11 +112,13 @@ const UserForm = () => {
                 className="input input-bordered focus:outline-none bg-background"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                data-cy="account-card-password-input"
               />
               <label className="label">
                 <button
                   onClick={handlePage}
                   className="label-text-alt link link-hover"
+                  data-cy="account-card-page-switch"
                 >
                   {page === "login"
                     ? "Don't have an account? Register Here"
@@ -107,7 +129,7 @@ const UserForm = () => {
             {/* Error Message */}
             {registerError && page === "register" && (
               <div className="alert alert-error shadow-lg p-1 text-sm rounded-md">
-                <div>
+                <div data-cy="account-card-register-error">
                   <FaInfoCircle />
                   <span>{registerError?.data?.error}</span>
                 </div>
@@ -115,7 +137,7 @@ const UserForm = () => {
             )}
             {loginError && page === "login" && (
               <div className="alert alert-error shadow-lg p-1 text-sm rounded-md">
-                <div>
+                <div data-cy="account-card-login-error">
                   <FaInfoCircle />
                   <span>{loginError?.data?.error}</span>
                 </div>
@@ -124,7 +146,11 @@ const UserForm = () => {
 
             <div className="form-control mt-6">
               {!registerLoading && page === "register" && (
-                <button className="btn btn-primary" onClick={handleSubmit}>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleSubmit}
+                  data-cy="account-card-register-button"
+                >
                   Register
                 </button>
               )}
@@ -134,7 +160,11 @@ const UserForm = () => {
                 </button>
               )}
               {!loginLoading && page === "login" && (
-                <button className="btn btn-primary" onClick={handleSubmit}>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleSubmit}
+                  data-cy="account-card-login-button"
+                >
                   Login
                 </button>
               )}
@@ -152,6 +182,7 @@ const UserForm = () => {
               src={Dog}
               alt="account"
               className="h-full w-auto object-cover"
+              data-cy="account-card-image"
             />
           </div>
         </div>

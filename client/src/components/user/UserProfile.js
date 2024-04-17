@@ -12,9 +12,10 @@ const UserProfile = ({ heading, token }) => {
     <div className="w-full">
       <div
         className="relative flex flex-col items-center bg-black overflow-hidden
-      lg:flex-row-reverse">
+      lg:flex-row-reverse"
+      >
         {/* Hero Image */}
-        <div className="w-full lg:w-3/4">
+        <div className="w-full lg:w-3/4" data-cy="user-profile-image-container">
           <LazyImage src={userHero} placeholder={LoadingHero} />
         </div>
 
@@ -24,24 +25,31 @@ const UserProfile = ({ heading, token }) => {
           lg:w-1/4 lg:h-full lg:p-0 lg:pl-12 lg:shadow-hero-right lg:absolute lg:left-0 lg:justify-center xl:gap-5"
         >
           {/* Heading */}
-          <h2 className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]">
+          <h2
+            className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]"
+            data-cy="user-profile-heading"
+          >
             Hi, {heading}
           </h2>
 
           {/* Description */}
-          <h3 className="fadeHeroText text-white font-normal lg:w-[225%] xl:text-lg xl:w-[185%]">
-            Welcome to <span className="font-medium">my-Movies!</span><br/>
+          <h3
+            className="fadeHeroText text-white font-normal lg:w-[225%] xl:text-lg xl:w-[185%]"
+            data-cy="user-profile-description"
+          >
+            Welcome to <span className="font-medium">my-Movies!</span>
+            <br />
             Your own personal collection store.
           </h3>
           {/* Logout */}
-          <button 
+          <button
             className={`fadeHeroText bg-card hover:bg-background btn btn-sm md:btn-md max-w-fit`}
             onClick={() => dispatch(removeUser())}
-            >
-              Logout
+            data-cy="user-profile-logout-button"
+          >
+            Logout
           </button>
         </div>
-        
       </div>
 
       {/* UserTabs */}
