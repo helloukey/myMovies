@@ -26,6 +26,7 @@ export default [
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   pluginReactConfig,
+  ...compat.extends("plugin:cypress/recommended"),
   {
     rules: {
       "no-unused-vars": "error",
@@ -35,7 +36,6 @@ export default [
       "react/prop-types": "off",
     },
   },
-  // ...compat.extends("plugin:cypress/recommended"),
   {
     ignores: [
       "node_modules",
