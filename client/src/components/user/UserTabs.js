@@ -28,12 +28,16 @@ const UserTabs = ({ token }) => {
   return (
     <div className="w-full pb-4 md:pb-10 lg:pb-12">
       {/* Tab Header */}
-      <div className="grid grid-cols-3 justify-center mb-10 xl:mb-16 bg-card">
+      <div
+        className="grid grid-cols-3 justify-center mb-10 xl:mb-16 bg-card"
+        data-cy="user-profile-tabs-container"
+      >
         <button
           onClick={handleMovies}
           className={`h-auto text-xs sm:text-base xl:text-lg xl:font-medium tab tab-lg tab-boxed py-5 md:py-5 ${
             movies ? "tab-active" : ""
           }`}
+          data-cy="user-profile-movies-tab"
         >
           MOVIES
         </button>
@@ -42,6 +46,7 @@ const UserTabs = ({ token }) => {
           className={`h-auto text-xs sm:text-base xl:text-lg xl:font-medium tab tab-lg tab-boxed md:py-5 ${
             shows ? "tab-active" : ""
           }`}
+          data-cy="user-profile-shows-tab"
         >
           SHOWS
         </button>
@@ -50,6 +55,7 @@ const UserTabs = ({ token }) => {
           className={`h-auto text-xs sm:text-base xl:text-lg xl:font-medium tab tab-lg tab-boxed md:py-5 ${
             person ? "tab-active" : ""
           }`}
+          data-cy="user-profile-person-tab"
         >
           PERSON
         </button>
