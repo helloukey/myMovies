@@ -78,7 +78,7 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
     }
   };
 
-  // Handlescroll on load
+  // Handle scroll on load
   useEffect(() => {
     if (dynamicWidth > 768) {
       handleScroll();
@@ -91,12 +91,21 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
       {cardAction && <CardActions mediaType={mediaType} />}
 
       {/* Heading */}
-      <div className="flex items-center font-medium mt-10 mb-2 sm:mb-3 md:mb-4 gap-4">
-        <h2 className="text-lg sm:text-2xl text-white">{heading}</h2>
+      <div
+        className="flex items-center font-medium mt-10 mb-2 sm:mb-3 md:mb-4 gap-4"
+        data-cy="carousel-heading-container"
+      >
+        <h2
+          className="text-lg sm:text-2xl text-white"
+          data-cy="carousel-heading-text"
+        >
+          {heading}
+        </h2>
         {explore && (
           <Link
             to={explore}
             className="btn btn-xs sm:btn-sm bg-card hover:bg-nav"
+            data-cy="carousel-heading-explore-button"
           >
             Explore All
           </Link>
@@ -130,6 +139,7 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
           <div
             className="flex gap-3 transition-all ease-in"
             ref={carouselContainerRef}
+            data-cy="carousel-items-container"
           >
             {/* Item */}
             {data &&
@@ -149,6 +159,7 @@ const Carousel = ({ data, heading, explore, mediaType }) => {
                             ? `/person/${item.id}`
                             : ""
                     }
+                    data-cy="carousel-item-link"
                   >
                     <LazyImage
                       src={

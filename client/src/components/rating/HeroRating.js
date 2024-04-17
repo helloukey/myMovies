@@ -2,7 +2,10 @@ const HeroRating = ({ data }) => {
   return (
     <>
       {data.vote_average > 0 ? (
-        <div className="rating rating-sm 2xl:rating-md pointer-events-none">
+        <div
+          className="rating rating-sm 2xl:rating-md pointer-events-none"
+          data-cy="hero-rating"
+        >
           <input
             aria-label="herostar"
             type="checkbox"
@@ -59,7 +62,10 @@ const HeroRating = ({ data }) => {
           />
         </div>
       ) : (
-        <div className="rating rating-sm 2xl:rating-md pointer-events-none">
+        <div
+          className="rating rating-sm 2xl:rating-md pointer-events-none"
+          data-cy="hero-rating"
+        >
           <input
             aria-label="herostar"
             type="checkbox"

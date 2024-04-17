@@ -45,6 +45,7 @@ const CardListing = ({ data, isFetching, pages, mediaType }) => {
             ref={cardRef}
             key={item.id}
             className="w-full aspect-[0.67/1] h-auto carousel-item flex flex-col rounded-md bg-nav cursor-pointer transition-all hover:scale-105 ease-in"
+            data-cy="card-listing-item"
           >
             <Link
               aria-label="card"

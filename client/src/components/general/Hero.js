@@ -72,6 +72,7 @@ const Hero = ({ data }) => {
           {/* Hero Image */}
           <div
             className={`w-full aspect-video lg:w-3/4 ${playTrailer ? "mx-auto" : ""}`}
+            data-cy="hero-image-container"
           >
             {!playTrailer && (
               <LazyImage
@@ -136,7 +137,10 @@ const Hero = ({ data }) => {
           }`}
           >
             {/* Heading */}
-            <h2 className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]">
+            <h2
+              className="fadeHeroText text-white text-xl md:text-3xl 2xl:text-5xl lg:leading-tight 2xl:leading-tight lg:w-[225%] xl:w-[185%]"
+              data-cy="hero-title"
+            >
               {data && data.mediaType ? (
                 <Link
                   to={
@@ -155,13 +159,24 @@ const Hero = ({ data }) => {
             {/* Rating & Certification */}
             <div className="fadeHeroText flex flex-col md:flex-row gap-2 md:gap-5 lg:w-[225%] xl:w-[185%]">
               {/* Rating */}
-              <div className="flex items-center gap-2">
+              <div
+                className="flex items-center gap-2"
+                data-cy="hero-rating-container"
+              >
                 {/* Hero Rating Component */}
                 <HeroRating data={data} />
-                <span className="2xl:text-lg">{data?.vote_count} Reviews</span>
+                <span
+                  className="2xl:text-lg"
+                  data-cy="hero-rating-reviews-count"
+                >
+                  {data?.vote_count} Reviews
+                </span>
               </div>
               {/* Season & Certification */}
-              <div className="flex items-center gap-2 2xl:text-lg">
+              <div
+                className="flex items-center gap-2 2xl:text-lg"
+                data-cy="hero-season-certification-container"
+              >
                 {data && data.number_of_seasons && (
                   <span>Season {data.number_of_seasons}</span>
                 )}
@@ -181,7 +196,10 @@ const Hero = ({ data }) => {
             </div>
 
             {/* Description */}
-            <h3 className="fadeHeroText text-white font-normal hidden md:block lg:w-[225%] xl:text-lg xl:w-[185%]">
+            <h3
+              className="fadeHeroText text-white font-normal hidden md:block lg:w-[225%] xl:text-lg xl:w-[185%]"
+              data-cy="hero-description"
+            >
               {data && data?.overview.length > 300
                 ? `${data.overview.substring(0, 300)}...`
                 : data?.overview}

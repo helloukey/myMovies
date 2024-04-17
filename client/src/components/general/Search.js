@@ -73,7 +73,10 @@ const Search = () => {
           className={`w-full flex justify-between items-center px-4 md:px-10 lg:px-12 xl:pl-[160px] py-2 md:py-4 bg-card fixed z-50 searchBar`}
         >
           {/* Search Field */}
-          <div className="form-control w-full mx-auto">
+          <div
+            className="form-control w-full mx-auto"
+            data-cy="search-field-container"
+          >
             <div className="input-group">
               <input
                 autoFocus
@@ -83,6 +86,7 @@ const Search = () => {
                 ref={searchInputRef}
                 value={searchParam.get("q") ? searchParam.get("q") : ""}
                 onChange={handleSearchParam}
+                data-cy="search-field-input"
               />
             </div>
           </div>
@@ -90,7 +94,10 @@ const Search = () => {
           {/* Cancel Button */}
           {searchParam.get("q") && (
             <button onClick={handleSearchClear}>
-              <FaTimes className="text-2xl mg:text-4xl" />
+              <FaTimes
+                className="text-2xl mg:text-4xl"
+                data-cy="search-cancel-button"
+              />
             </button>
           )}
         </div>
