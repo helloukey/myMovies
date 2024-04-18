@@ -17,9 +17,17 @@ const ArtistCredits = ({ data }) => {
   return (
     <div className="w-full">
       {/* Filter */}
-      <div className="grid grid-cols-2 sm:flex gap-5 sm:gap-10 mb-8">
+      <div
+        className="grid grid-cols-2 sm:flex gap-5 sm:gap-10 mb-8"
+        data-cy="artist-credit-container"
+      >
         <div className="grid grid-cols-1 gap-1 sm:flex sm:items-center sm:gap-2">
-          <span className="text-sm sm:text-base font-medium">Department</span>
+          <span
+            className="text-sm sm:text-base font-medium"
+            data-cy="artist-credit-department"
+          >
+            Department
+          </span>
           <select
             className="select select-sm sm:select-md focus:outline-none bg-nav"
             onChange={handleDepartmentFilter}
@@ -43,7 +51,12 @@ const ArtistCredits = ({ data }) => {
         </div>
 
         <div className="grid grid-cols-1 gap-1 sm:flex sm:items-center sm:gap-2">
-          <span className="text-sm sm:text-base font-medium">Media</span>
+          <span
+            className="text-sm sm:text-base font-medium"
+            data-cy="artist-credit-media"
+          >
+            Media
+          </span>
           <select
             className="select select-sm sm:select-md focus:outline-none bg-nav"
             onChange={handleMediaFilter}
