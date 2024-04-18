@@ -61,6 +61,7 @@ const ArtistPhotos = ({ data }) => {
         <label
           className="absolute top-0 right-0 lg:top-1 lg:right-1 btn btn-ghost btn-circle z-50"
           htmlFor="my-modal-4"
+          data-cy="artist-photos-close"
         >
           <FaTimes className="text-white text-2xl mg:text-4xl cursor-pointer" />
         </label>
@@ -93,8 +94,16 @@ const ArtistPhotos = ({ data }) => {
       </label>
 
       {/* Posters */}
-      <h2 className="text-xl lg:text-2xl font-medium mb-4 md:mb-5">Photos</h2>
-      <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+      <h2
+        className="text-xl lg:text-2xl font-medium mb-4 md:mb-5"
+        data-cy="artist-photos-headline"
+      >
+        Photos
+      </h2>
+      <div
+        className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7"
+        data-cy="artist-photos-container"
+      >
         {data &&
           data.map((item, index) => (
             <label
@@ -102,6 +111,7 @@ const ArtistPhotos = ({ data }) => {
               htmlFor="my-modal-4"
               className="w-auto h-auto rounded-md cursor-pointer transition-all hover:scale-105 ease-in"
               onClick={() => handleModal(index)}
+              data-cy="artist-photos-single"
             >
               <LazyImage
                 src={item.file_path ? poster + item.file_path : EmptyCard}
