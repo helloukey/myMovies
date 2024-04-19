@@ -6,12 +6,16 @@
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "test": "jest"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "*.js": "eslint --cache --fix --max-warnings=0",
     "**/*.js": "prettier --write"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
@@ -31,8 +35,12 @@
     "@eslint/js": "^9.0.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^28.2.0",
     "globals": "^15.0.0",
+    "jest": "^29.7.0",
     "lint-staged": "^15.2.2",
-    "prettier": "3.2.5"
+    "mongodb-memory-server": "^9.1.8",
+    "prettier": "3.2.5",
+    "supertest": "^6.3.4"
   }
 }
