@@ -1,0 +1,40 @@
+name: Perform Testing
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  test-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: client
+          start: npm start
+  test-server:
+    runs-on: ubuntu-latest
+    env:
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+      API_KEY: ${{ secrets.API_KEY }}
+      PORT: ${{ secrets.PORT }}
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        working-directory: server
+        run: npm install
+      - name: Run Tests
+        working-directory: server
+        run: npm run test
