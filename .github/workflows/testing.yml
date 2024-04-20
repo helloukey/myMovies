@@ -1,0 +1,32 @@
+name: Perform Testing
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  test-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6
+        with:
+          start: start-client
+  test-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        run: npm install-server
+      - name: Run Tests
+        run: npm test-server

@@ -14,7 +14,8 @@
     "prepare": "husky install",
     "lint": "npm-run-all lint:backend lint:frontend",
     "lint:backend": "cd server && npm run lint:staged",
-    "lint:frontend": "cd client && npm run lint:staged"
+    "lint:frontend": "cd client && npm run lint:staged",
+    "test-server": "cd server && npm run test"
   },
   "repository": {
     "type": "git",
