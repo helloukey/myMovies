@@ -16,7 +16,8 @@ jobs:
       - name: Cypress Run
         uses: cypress-io/github-action@v6
         with:
-          start: npm run start-client
+          working-directory: client
+          start: npm start
   test-server:
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +28,8 @@ jobs:
         with:
           node-version: 20
       - name: Install Dependencies
-        run: npm install-server
+        working-directory: server
+        run: npm install
       - name: Run Tests
-        run: npm run test-server
+        working-directory: server
+        run: npm run test
