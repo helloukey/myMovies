@@ -33,11 +33,7 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - uses: JorgeLNJunior/render-deploy@v1.4.4
+      - uses: johnbeynon/render-deploy-action@v0.0.8
         with:
-          service_id: ${{ secrets.RENDER_SERVER_SERVICE_ID }}
-          api_key: ${{ secrets.RENDER_API_KEY }}
-          clear_cache: true
-          wait_deploy: true
-          github_deployment: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          service-id: ${{ secrets.RENDER_SERVER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
