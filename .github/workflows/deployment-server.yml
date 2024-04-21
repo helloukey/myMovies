@@ -1,4 +1,4 @@
-name: Perform Test & Deploy to Server (Render)
+name: Perform Test & Deploy to Server
 on:
   push:
     branches:
