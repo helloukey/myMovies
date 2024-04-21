@@ -27,8 +27,7 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - uses: bounceapp/render-action@0.6.0
+      - uses: sws2apps/render-deployment@main
         with:
-          render-token: ${{ secrets.RENDER_API_KEY }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          service-id: ${{ secrets.RENDER_CLIENT_SERVICE_ID }}
+          serviceId: ${{ secrets.RENDER_SERVER_SERVICE_ID }}
+          apiKey: ${{ secrets.RENDER_API_KEY }}
