@@ -1,0 +1,42 @@
+name: Perform Test & Deploy to Server
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - server/**
+      - .github/workflows/deployment-server.yml
+jobs:
+  test-server:
+    runs-on: ubuntu-latest
+    env:
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+      API_KEY: ${{ secrets.API_KEY }}
+      PORT: ${{ secrets.PORT }}
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Dependencies
+        working-directory: server
+        run: npm install
+      - name: Run Tests
+        working-directory: server
+        run: npm run test
+  deploy-server:
+    runs-on: ubuntu-latest
+    needs: test-server
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - uses: JorgeLNJunior/render-deploy@v1.4.4
+        with:
+          service_id: ${{ secrets.RENDER_SERVER_SERVICE_ID }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          clear_cache: true
+          wait_deploy: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
