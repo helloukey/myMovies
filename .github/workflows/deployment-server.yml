@@ -33,7 +33,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - uses: sws2apps/render-deployment@main
+      - uses: bounceapp/render-action@0.6.0
         with:
-          serviceId: ${{ secrets.RENDER_SERVER_SERVICE_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
+          render-token: ${{ secrets.RENDER_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          service-id: ${{ secrets.RENDER_SERVER_SERVICE_ID }}
