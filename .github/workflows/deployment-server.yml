@@ -39,4 +39,5 @@ jobs:
           api_key: ${{ secrets.RENDER_API_KEY }}
           clear_cache: true
           wait_deploy: true
+          github_deployment: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
