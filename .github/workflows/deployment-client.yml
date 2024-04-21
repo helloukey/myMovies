@@ -27,7 +27,8 @@ jobs:
     steps:
       - name: Get Code
         uses: actions/checkout@v4
-      - uses: johnbeynon/render-deploy-action@v0.0.8
-        with:
-          service-id: ${{ secrets.RENDER_CLIENT_SERVICE_ID }}
-          api-key: ${{ secrets.RENDER_API_KEY }}
+      - name: Deploy
+        env:
+          deploy_url: ${{ secrets.RENDER_CLIENT_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
