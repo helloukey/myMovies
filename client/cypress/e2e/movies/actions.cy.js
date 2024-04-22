@@ -90,7 +90,6 @@ describe("Perform actions on the movies page", () => {
     cy.getCypress("carousel-item-link").should("exist");
     cy.getCypress("carousel-item-link").should("be.visible");
     cy.getCypress("carousel-item-link").last().click();
-    cy.log(cy.getCypress("carousel-item-link").last());
     cy.url().should("include", "/movies/");
     cy.go("back");
   });
