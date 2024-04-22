@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://mymovies.onrender.com/",
+    baseUrl: process.env.REACT_APP_BACKEND_URL,
   }),
   tagTypes: ["collection"],
   endpoints: (builder) => ({
@@ -97,5 +97,5 @@ export const {
   useAddLikeMutation,
   useAddWatchLaterMutation,
   useRemoveLikeMutation,
-  useRemoveWatchLaterMutation
+  useRemoveWatchLaterMutation,
 } = userApi;
