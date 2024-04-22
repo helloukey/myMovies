@@ -9,6 +9,8 @@ on:
 jobs:
   test-client:
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
     steps:
       - name: Get Code
         uses: actions/checkout@v4
