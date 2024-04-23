@@ -38,6 +38,13 @@ myMovies is a complete MERN stack progressive web app (PWA) for everything relat
 
 - Finally, Preview this project locally by visiting the URL: `localhost:<PORT number>`
 
+## Docker Compose
+
+- Run the project in docker container using:
+  ```docker compose up -d --build```
+- Stop the docker container using:
+  ```docker compose down```
+
 ## License
 
 [![license](https://img.shields.io/github/license/helloukey/mymovies?style=for-the-badge)](LICENSE)
