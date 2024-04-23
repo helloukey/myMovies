@@ -24,11 +24,15 @@ myMovies is a complete MERN stack progressive web app (PWA) for everything relat
   npm install-client && install-server
 ```
 
-- Rename the `.env_sample` file to `.env` inside server folder.
+- Rename the `.env_sample` file to `.env` inside `server` folder.
 
 - Get TMDB API Key from **[HERE](https://developers.themoviedb.org/3)** and MongoDB connection URI from **[HERE](https://www.mongodb.com/)**
 
 - Provide your **MONGODB_URI**, **JWT_SECRET_KEY**, **PORT**, **BASE_URL**, and **API_KEY** inside the `.env` file.
+
+- Rename the `.env_sample` file to `.env` inside `client` folder.
+
+- Provide your **REACT_APP_BACKEND_URL** inside the `.env` file.
 
 - Run `npm start-server && start-client` from the root folder.
 
